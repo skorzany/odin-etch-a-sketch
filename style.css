@@ -1,0 +1,19 @@
+/* BASE CSS RESET */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+}
+/* END OF BASE CSS RESET */
+
+.grid {
+    width: 800px;
+    height: 800px;
+    border: 1px solid black;
+}
