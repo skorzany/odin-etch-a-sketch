@@ -9,12 +9,14 @@
 
 body {
     min-height: 100vh;
+    text-align: center;
 }
 /* END OF BASE CSS RESET */
 
 .grid {
     width: 800px;
     height: 800px;
+    margin: 25px auto;
     display: flex;
     flex-wrap: wrap;
 }
