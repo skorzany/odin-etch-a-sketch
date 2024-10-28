@@ -1,10 +1,22 @@
-function drawSquares(howMany, where) {
+function createStyle(n) {
+    return `background-color: black;
+        width: ${n}px;
+        height: ${n}px;
+        opacity: 1;`;
+}
+
+
+function drawSquares(where, howMany = 16) {
     const squareSize = where.offsetWidth/howMany;
+    const style = createStyle(squareSize);
+    const newGrid = document.createElement("div");
+    newGrid.classList.add("grid");
     for (let i = 0; i < howMany**2; i++) {
         const square = document.createElement("div");
-        square.setAttribute("style", `width: ${squareSize}px; height: ${squareSize}px; background-color: red;`);
-        where.appendChild(square);
+        square.setAttribute("style", style);
+        newGrid.appendChild(square);
     }
+    where.replaceWith(newGrid);
 }
 
 function getUserInput() {
@@ -13,18 +25,29 @@ function getUserInput() {
         alert("Please enter an integer in range 1-100 inclusive.");
         input = prompt("Enter a number between 1 and 100 (inclusive)", "16");
     }
-    return input;
+    return +input;
 }
 
-function test() {alert("O TY CHUJU BOBRZE");}
+function drawNewBoard() {
+    const squareNumber = getUserInput();
+    grid = document.querySelector(".grid");
+    drawSquares(grid, squareNumber);
+    updateSpans(squareNumber);
+}
+
+function updateSpans(n = 16) {
+    const spans = document.querySelectorAll("span");
+    spans.forEach((x) => x.textContent = n);
+}
 
 function main() {
-    const btn = document.querySelector("button");
-    btn.addEventListener("click", test);
+    updateSpans();
+
     const grid = document.querySelector(".grid");
-    drawSquares(16, grid);
-    // let input = getUserInput();
-    // console.log(input);
+    drawSquares(grid);
+
+    const btn = document.querySelector("button");
+    btn.addEventListener("click", drawNewBoard);
 }
 
 main();
