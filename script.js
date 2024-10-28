@@ -2,7 +2,7 @@ function createStyle(n) {
     return `background-color: black;
         width: ${n}px;
         height: ${n}px;
-        opacity: 1;`;
+        opacity: 0;`;
 }
 
 
@@ -13,6 +13,7 @@ function drawSquares(where, howMany = 16) {
     newGrid.classList.add("grid");
     for (let i = 0; i < howMany**2; i++) {
         const square = document.createElement("div");
+        square.classList.add("square");
         square.setAttribute("style", style);
         newGrid.appendChild(square);
     }
@@ -43,11 +44,18 @@ function updateSpans(n = 16) {
 function main() {
     updateSpans();
 
+    const btn = document.querySelector("button");
+    btn.addEventListener("click", drawNewBoard);
+
     const grid = document.querySelector(".grid");
     drawSquares(grid);
 
-    const btn = document.querySelector("button");
-    btn.addEventListener("click", drawNewBoard);
+    document.addEventListener("mouseover", e => {
+        const target = e.target;
+        if (target.matches(".square")) {
+            if (+target.style.opacity < 1) target.style.opacity = +target.style.opacity + 0.1;
+        }
+    });
 }
 
 main();
