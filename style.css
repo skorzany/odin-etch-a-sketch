@@ -16,7 +16,15 @@ body {
 .grid {
     width: 800px;
     height: 800px;
-    margin: 25px auto;
     display: flex;
     flex-wrap: wrap;
+}
+
+#canvas {
+    width: max-content;
+    margin: 25px auto;
+    border: 1px solid brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

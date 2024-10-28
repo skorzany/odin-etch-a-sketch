@@ -50,7 +50,9 @@ function main() {
     const grid = document.querySelector(".grid");
     drawSquares(grid);
 
-    document.addEventListener("mouseover", e => {
+    const canvas = document.querySelector("#canvas");
+
+    canvas.addEventListener("mouseover", e => {
         const target = e.target;
         if (target.matches(".square")) {
             if (+target.style.opacity < 1) target.style.opacity = +target.style.opacity + 0.1;
