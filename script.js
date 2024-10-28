@@ -1,5 +1,6 @@
 function createStyle(n) {
-    return `background-color: black;
+    const randomColor = Math.floor(Math.random()*16777215).toString(16);
+    return `background-color: #${randomColor};
         width: ${n}px;
         height: ${n}px;
         opacity: 0;`;
@@ -8,11 +9,11 @@ function createStyle(n) {
 
 function drawSquares(where, howMany = 16) {
     const squareSize = where.offsetWidth/howMany;
-    const style = createStyle(squareSize);
     const newGrid = document.createElement("div");
     newGrid.classList.add("grid");
     for (let i = 0; i < howMany**2; i++) {
         const square = document.createElement("div");
+        const style = createStyle(squareSize);
         square.classList.add("square");
         square.setAttribute("style", style);
         newGrid.appendChild(square);
